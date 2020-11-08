@@ -102,3 +102,10 @@ dist
 
 # TernJS port file
 .tern-port
+
+
+# Adonis directory for storing tmp files
+tmp
+
+# The development sqlite file
+database/*.sqlite
