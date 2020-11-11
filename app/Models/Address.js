@@ -7,12 +7,12 @@ class Address extends Model {
 
   static get rules () {
     return {
-      "zip_code": 'required',
-      "number": 'required',
-      "street": 'required',
-      "neighborhood": 'required',
-      "city": 'required',
-      "state": 'required'
+      "addresses.*.zip_code": 'required',
+      "addresses.*.number": 'required',
+      "addresses.*.street": 'required',
+      "addresses.*.neighborhood": 'required',
+      "addresses.*.city": 'required',
+      "addresses.*.state": 'required'
     }
   }
 

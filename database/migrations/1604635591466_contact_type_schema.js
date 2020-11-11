@@ -15,7 +15,7 @@ class ContactTypeSchema extends Schema {
     // create default data
     this.schedule(async (trx) => {
       const types = [{"name": "Telefone", "created_at": this.fn.now(), "updated_at": this.fn.now()}, 
-                     {"name": "E-mail", "created_at": this.fn.now(), "updated_at": this.fn.now()}]
+                     {"name": "Celular", "created_at": this.fn.now(), "updated_at": this.fn.now()}]
       await Database.table('contact_types').transacting(trx).insert(types)
     })
 

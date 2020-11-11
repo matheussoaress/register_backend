@@ -7,8 +7,8 @@ class Contact extends Model {
 
   static get rules () {
     return {
-      "contact_type_id": 'required',
-      "value": 'required',
+      "contacts.*.contact_type_id": 'required',
+      "contacts.*.number": 'required',
     }
   }
 

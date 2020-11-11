@@ -9,7 +9,7 @@ class ContactSchema extends Schema {
       table.increments()
       table.integer('costumer_id').unsigned().references('id').inTable('costumers')
       table.integer('contact_type_id').unsigned().references('id').inTable('contact_types')
-      table.string('value', 255).notNullable().index()
+      table.string('number', 255).notNullable().index()
       table.timestamps()
     })
   }

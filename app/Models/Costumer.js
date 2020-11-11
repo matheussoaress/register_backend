@@ -2,7 +2,7 @@
 
 /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
 const Model = use('Model')
-const Mail = use('Mail')
+// const Mail = use('Mail')
 
 class Costumer extends Model {
 
@@ -18,12 +18,12 @@ class Costumer extends Model {
     super.boot()
 
     this.addHook('afterSave', async (costumerInstance) => {
-      await Mail.send('emails.welcome', user.toJSON(), (message) => {
-        message
-          .to("matheushsoaress@gmail.com")
-          .from('sistema@register.test')
-          .subject(`O cliente ${costumerInstance.name} acabou de se cadastrar`)
-      })
+      // await Mail.send('emails.welcome', user.toJSON(), (message) => {
+      //   message
+      //     .to("matheushsoaress@gmail.com")
+      //     .from('sistema@register.test')
+      //     .subject(`O cliente ${costumerInstance.name} acabou de se cadastrar`)
+      // })
     })
   }
 

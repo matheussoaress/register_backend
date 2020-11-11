@@ -25,8 +25,12 @@ class CostumerController {
    * @param {View} ctx.view
    */
   async index ({ request, response, view }) {
-    response.header('Content-type', 'application/json');
-    return await Costumer.all()
+    response.header('Content-type', 'application/json')
+    let costumers = await Costumer.query()
+                                  .with('contacts')
+                                  .fetch()
+    response.json(costumers)
+
   }
 
   /**
@@ -39,7 +43,7 @@ class CostumerController {
    * @TODO Validação do campos e limitar a 3 endereços.
    */
   async store ({ request, response }) {
-    const costumerData = request.only(['name', 'costumer_type_id', 'document']);
+    const costumerData = request.only(['name', 'costumer_type_id', 'email', 'document']);
     const addressData = request.only(["addresses"]).addresses;
     const contactData = request.only(["contacts"]).contacts;
     let costumer = await Costumer.create(costumerData);
@@ -114,7 +118,7 @@ class CostumerController {
       await costumer.addresses().delete()
       await costumer.contacts().delete()
       await costumer.delete()
-      console.log(costumer.id)
+    
     }
   }
 }
