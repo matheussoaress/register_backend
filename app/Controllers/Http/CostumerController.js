@@ -43,10 +43,11 @@ class CostumerController {
    * @TODO Validação do campos e limitar a 3 endereços.
    */
   async store ({ request, response }) {
+
+
     const costumerData = request.only(['name', 'costumer_type_id', 'email', 'document']);
     const addressData = request.only(["addresses"]).addresses;
     const contactData = request.only(["contacts"]).contacts;
-    let costumer = await Costumer.create(costumerData);
 
     const costumerValidation = await validate(costumerData, Costumer.rules)
     const addressValidation = await validate(addressData, Address.rules)
@@ -62,6 +63,8 @@ class CostumerController {
     }else if (contactValidation.fails()) {
       return response.status(400).json(contactValidation.messages()) 
     }
+
+    let costumer = await Costumer.create(costumerData);
     
     await costumer.addresses()
                   .createMany(addressData);
